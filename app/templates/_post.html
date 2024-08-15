@@ -1,0 +1,36 @@
+<div style="border: 1px solid gray; border-radius: 10px; padding: 5px; margin: 10px">
+    <table>
+        <tr>
+            <th class="post-title" colspan="2">{{ post.head }}</th>
+        </tr>
+        <tr>
+            <td class="post-info" colspan="2">
+                <img src="{{ post.author.avatar(60) }}" class="rounded-circle"/>
+                <strong>
+                    <a href="{{ url_for('user', username=post.author.username) }}">
+                        {{ post.author.username }}
+                    </a>
+                </strong>{{ moment(post.timestamp).fromNow() }}
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                💵Стоимость поездки: <strong>{{ post.price }}</strong><br>
+                ☑️Места для посещения: <strong>{{ post.places }}</strong><br><br>
+                {{ post.body }}
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <img src="{{ post.photo_url }}" alt="Изображение поста" width="450px">
+            </td>
+            <td>
+                <video id="player" playsinline controls data-poster="/path/to/poster.jpg" width="450px">
+                    <source src="{{ post.video_url }}" type="video/mp4"/>
+                    <!-- Captions are optional -->
+                    <track kind="captions" label="English captions" src="/path/to/captions.vtt" srclang="en" default/>
+                </video>
+            </td>
+        </tr>
+    </table>
+</div>
